@@ -1,0 +1,16 @@
+{
+    "name": "jigarius/custom_email_example",
+    "description": "Examples of sending custom emails in Drupal using Symfony Mailer.",
+    "version": "1.0.0",
+    "homepage": "https://github.com/jigarius/drupal-custom-email-example",
+    "authors": [
+        {
+            "name": "Jigarius",
+            "homepage": "https://jigarius.com/about",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "drupal/symfony_mailer": "^1.4"
+    }
+}
