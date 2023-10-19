@@ -1,0 +1,17 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - custom_email_example
+id: custom_email_example.logout
+configuration:
+  email_body:
+    content:
+      value: |-
+        <h4>Logged out</h4>
+        <p>Hello {{ account.name.value }}.</p>
+        <p>This is to notify you that you have logged out of your account on <a href="[site:url]">[site:name]</a> from the IP Address <strong>{{ ip }}</strong>.</p>
+        <p>Regards.</p>
+      format: email_html
+  email_subject:
+    value: 'Logged out from [site:name]'

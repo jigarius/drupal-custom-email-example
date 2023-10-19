@@ -1,0 +1,8 @@
+name: 'Email Example (Symfony Mailer)'
+description: 'Contains an example of sending emails using Symfony Mailer.'
+type: module
+core_version_requirement: ^10
+package: 'Example modules'
+
+dependencies:
+  - symfony_mailer:symfony_mailer

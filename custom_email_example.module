@@ -1,0 +1,53 @@
+<?php
+
+use Drupal\Core\Session\AccountInterface;
+use Drupal\symfony_mailer\Address as EmailAddress;
+use Drupal\user\UserInterface;
+
+/**
+ * Implements hook_user_login().
+ *
+ * Demonstrates sending an email with simple syntax.
+ */
+function custom_email_example_user_login(UserInterface $account): void {
+  /** @var \Drupal\symfony_mailer\EmailFactoryInterface $emailFactory */
+  $emailFactory = \Drupal::service('email_factory');
+  // The Email Factory is responsible for creating Email objects. In this
+  // shorthand example, we call ::sendTypedEmail(), which creates an Email
+  // object and sends the email. Once done, the Email object is returned,
+  // not the status of the sending.
+  //
+  // Though the docs are not clear at the moment, I assume that in case of
+  // a failure, an exception must be thrown.
+  $emailFactory->sendTypedEmail('custom_email_example', 'login', $account->getEmail());
+  \Drupal::messenger()->addStatus(t(
+    'Attempted sending %type notification to %email.',
+    ['%type' => 'login', '%email' => $account->getEmail()],
+  ));
+}
+
+/**
+ * Implements hook_user_logout().
+ *
+ * Demonstrates sending an email with advanced syntax.
+ */
+function custom_email_example_user_logout(AccountInterface $account): void {
+  /** @var \Drupal\symfony_mailer\EmailFactoryInterface $emailFactory */
+  $emailFactory = \Drupal::service('email_factory');
+  // The Email Factory, creates an Email object which we modify as per our
+  // requirements. Personally, I like this approach more.
+  $email = $emailFactory->newTypedEmail('custom_email_example', 'logout')
+    ->setTo($account->getEmail())
+    ->setCc(new EmailAddress('r2d2@example.com', 'R2D2'))
+    // This will be available as a Twig variable in the email body.
+    ->setVariable('account', $account);
+
+  // When we're ready, we call ::send(), which returns a boolean indicating
+  // the status of the operation.
+  if ($email->send()) {
+    \Drupal::messenger()->addStatus(t(
+      'Attempted sending %type notification to %email.',
+      ['%type' => 'logout', '%email' => $account->getEmail()],
+    ));
+  }
+}
