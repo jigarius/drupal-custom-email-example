@@ -1,6 +1,6 @@
 # Drupal Email Example
 
-Example for sending emails using Symfony Mailer module in Drupal.
+Example for sending emails using Symfony Mailer module in Drupal. This repository is related to the article [Sending Emails with Drupal Symfony Mailer](https://jigarius.com/blog/drupal-symfony-mailer) on [Jigarius.com](https://jigarius.com/).
 
 ## Installation
 
