@@ -11,6 +11,6 @@
         }
     ],
     "require": {
-        "drupal/symfony_mailer": "^1.4"
+        "drupal/symfony_mailer": "^2.0"
     }
 }
