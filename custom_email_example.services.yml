@@ -1,0 +1,7 @@
+services:
+  _defaults:
+    autowire: true
+
+  # Mailer Plus finds this service via the #[MailerInfo] attribute on the class
+  # and injects the $baseTag constructor argument.
+  Drupal\custom_email_example\Mailer\CustomEmailExampleMailer: ~
