@@ -56,5 +56,5 @@ Mailer Plus » Policy_.
 - `custom_email_example.services.yml`: Registers the mailer as a service.
 - `config/install/mailer_policy.mailer_policy.*.yml`: Default subject and body
   for each email.
-- `custom_email_example.module`: Sends the emails from `hook_user_login()` and
-  `hook_user_logout()`.
+- `src/Hook/CustomEmailExampleHooks.php`: Sends the emails from
+  `hook_user_login()` and `hook_user_logout()`.
