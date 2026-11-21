@@ -48,13 +48,3 @@ If everything went well, you should receive email notifications when you:
 
 The subject and body of each email can be edited at _Configuration » System »
 Mailer Plus » Policy_.
-
-## How it works
-
-- `src/Mailer/CustomEmailExampleMailer.php`: A mailer service that builds and
-  sends the emails. Its `#[MailerInfo]` attribute declares the email types.
-- `custom_email_example.services.yml`: Registers the mailer as a service.
-- `config/install/mailer_policy.mailer_policy.*.yml`: Default subject and body
-  for each email.
-- `src/Hook/CustomEmailExampleHooks.php`: Sends the emails from
-  `hook_user_login()` and `hook_user_logout()`.
